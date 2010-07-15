@@ -4,9 +4,70 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Notice Message Plugin</title>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script type="text/javascript" src="src/noticeMsg.js"></script>
+		<link type="text/css" rel="stylesheet" href="src/noticeMsg.css" />
+		<style type="text/css">
+			html, body {
+				height: 100%;
+			}
+			#container {
+				float: right;
+				width: 50%;
+				height: 250px;
+				border: 1px solid #aaaaaa;
+				background: #eeeeee;
+				position: relative;
+			}
+			.box {
+				position: relative;
+				float: left;
+				width: 300px;
+				height: 150px;
+				border: 1px solid #aaaaaa;
+				background: #eeeeee;
+				margin: 10px;
+			}
+		</style>
+		<script type="text/javascript">
+			
+			function normalMsg() {
+				$('body').noticeMsg('Normal Message');
+				// or $.noticeMsg('test');
+			}
+			
+			function updateMsg() {
+				$('body').noticeMsg('Updating...', {dur: false});
+				setTimeout(function(){
+					$.noticeMsg('Complete!');
+				}, 1000);
+			}
+			
+			function insideMsg() {
+				$('#container').noticeMsg('Inside Message');
+			}
+			
+			function boxMsg() {
+				$('.box').noticeMsg('Inside Message');
+			}
+			
+		</script>
     </head>
     <body>
         <h1>Notice Message Plugin</h1>
-		
+		<p>Notice Message Plugin is jQuery Plugin inspired by Oleg Slobodskoi's humanized messages plugin.<br />
+		<a href="http://jsui.de/projects/humanizedmessages/">http://jsui.de/projects/humanizedmessages/</a></p>
+		<div id="container">
+			Contaier
+		</div>
+		<ul>
+			<li><a href="javascript:normalMsg();">normal message</a></li>
+			<li><a href="javascript:updateMsg();">update sample</a></li>
+			<li><a href="javascript:insideMsg();">message inside of a container</a></li>
+			<li><a href="javascript:boxMsg();">message inside of boxes</a></li>
+		</ul>
+		<br clear="all" />
+		<div class="box">box</div>
+		<div class="box">box</div>
+		<div class="box">box</div>
     </body>
 </html>
