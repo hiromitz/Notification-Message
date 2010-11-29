@@ -10,7 +10,7 @@
  * Depends:
  *   jquery.js
  *
- *  Copyright (c) 2010 Hiromitz ( http://hiromitz.jimdo.com/ )
+ *  Author: Hiromitz ( http://hiromitz.jimdo.com/ )
  */
 (function($){
 var PROP_NAME = 'NoticeMsg';
@@ -34,14 +34,14 @@ $.fn.noticeMsg = function(message, options) {
 				top: ($(this).height() - $el.innerHeight())/2,
 				left: ($(this).width() - $el.innerWidth())/2
 			})
-			.fadeIn(op.fade);
+			.stop().fadeIn(op.fade);
 		
 		clearTimeout($.data(e, PROP_NAME));
 		op.dur && $.data(e, PROP_NAME, setTimeout(remove, op.dur));
 		
 		function remove() {
 			$.removeData(e, PROP_NAME);
-			$el.fadeOut(op.fade, function(){
+			$el.stop().fadeOut(op.fade, function(){
 				$el.remove();
 			});
 		}
